@@ -1,12 +1,67 @@
 <div class="row">
   <div class="col-xs-12">
-      <div class="form-group">
-        <label for="recipe-name">Recipe Name</label>
-        <input id="recipe-name" type="text" class="form-control" [(ngModel)]="recipeName">
+    <form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+      <div class="row" style="margin-bottom: 10px;">
+        <div class="col-xs-12">
+          <button class="btn btn-success" [disabled]="!recipeForm.valid" type="submit">Save</button>
+          <button class="btn btn-danger" (click)="onCencel()" type="button">Cancel</button>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="recipe-desc">Recipe Description</label>
-        <textarea id="recipe-desc" class="form-control" rows="5" [(ngModel)]="recipeDescription"></textarea>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Recipe Name</label>
+            <input id="name" type="text" class="form-control"
+              formControlName="name">
+          </div>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input id="imagePath" type="text" class="form-control"
+             formControlName="imagePath" #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="line-height: 0px;">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="image-responsive center-block" style="max-height: 300px;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Recipe Description</label>
+            <textarea id="description" class="form-control" rows="5" 
+             formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div class="row" style="margin-top: 10px;"
+            [formGroupName]="i" 
+            *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index">
+            <div class="col-xs-8">
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="col-xs-2">
+              <input type="number" class="form-control" formControlName="amount">
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row" style="margin-bottom: 10px;">
+            <div class="col-xs-12">
+              <button class="btn btn-success" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
