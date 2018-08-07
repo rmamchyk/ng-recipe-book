@@ -85,7 +85,7 @@ export class RecipeService {
                 new Ingredient('Сabbage', 2)
             ]),
         new Recipe('Hot dog', 'A hot dog(also spelled hotdog), also known as a frankfurter(sometimes shortened to frank), dog, or wiener, is a cooked sausage, traditionally grilled or steamed and served in a partially sliced bun. It is a type of sausage sandwich.',
-            'http://runsickcattle.com/data/out/73/720168.jpg',
+            'https://chompies.com/wp-content/uploads/2017/03/HotDog.png',
             [
                 new Ingredient('Buns', 2),
                 new Ingredient('Sausages', 1),
