@@ -31,4 +31,8 @@ export class HeaderComponent {
     onFetchData() {
         this.dataStorageService.fetchRecipes();
     }
+
+    isAuthenticated() {
+        return this.authService.isAuthenticated();
+    }
 }
