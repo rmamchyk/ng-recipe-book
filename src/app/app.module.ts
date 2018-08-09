@@ -20,7 +20,6 @@ import { AuthModule } from './auth/auth.module';
     SharedModule,
     CoreModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
