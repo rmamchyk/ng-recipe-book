@@ -12,12 +12,12 @@
           </span>
         </div>
         <div class="col-sm-2 form-group">
-          <label for="amout">Amount</label>
+          <label for="amount">Amount</label>
           <input type="number" id="amount" class="form-control" 
-            name="amout" ngModel #amout="ngModel" required pattern="^[1-9]+[0-9]*$">
+            name="amount" ngModel #amount="ngModel" required pattern="^[1-9]+[0-9]*$">
           <span class="error-message"
-            *ngIf="!amout.valid && amout.touched">
-            Please enter a valid amout!
+            *ngIf="!amount.valid && amount.touched">
+            Please enter a valid amount!
           </span>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <button class="btn btn-success" [disabled]="!f.valid" type="submit">
             {{editMode ? 'Update' : 'Add'}}
           </button>
-          <button class="btn btn-danger" type="button" [disabled]="editedItemIndex == null" (click)="onDeleteItem()">
+          <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDeleteItem()">
             Delete
           </button>
           <button class="btn btn-primary" (click)="onClearItem()" type="button">Clear</button>
