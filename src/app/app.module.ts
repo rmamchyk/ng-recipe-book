@@ -20,7 +20,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     AppComponent
   ],
   imports: [ 
-    BrowserModule, 
+    BrowserModule.withServerTransition({appId: 'my-app'}), 
     HttpClientModule,
     ShoppingListModule,
     AuthModule,
@@ -29,7 +29,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([AuthEffects]),
     StoreRouterConnectingModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : [] // only for DEV environment
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   bootstrap: [AppComponent]
 })
